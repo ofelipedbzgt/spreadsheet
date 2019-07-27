@@ -89,7 +89,21 @@ def is_cyclops(n):
 
 
 def domino_cycle(tiles):
-    pass
+    if len(tiles) == 0:
+        return True
+    elif len(tiles) == 1:
+        if tiles[0][0] == tiles[0][1]:
+            return True
+        return False
+    for i in range(len(tiles)):
+        try:
+            if tiles[-1][-1] != tiles[0][0]:
+                return False
+            if tiles[i][1] != tiles[i + 1][0]:
+                return False
+        except IndexError:
+            continue
+    return True
 
 
 if __name__ == '__main__':
@@ -100,4 +114,4 @@ if __name__ == '__main__':
     # print(only_odd_digits(0))
     # print(pyramid_blocks(10**6, 10**6, 10**6))
     # print(is_cyclops(77781088999))
-
+    print(domino_cycle([(2, 2)]))
