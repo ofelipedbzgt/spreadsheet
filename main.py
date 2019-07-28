@@ -106,6 +106,39 @@ def domino_cycle(tiles):
     return True
 
 
+def count_dominators(items):
+    highest_value = 0
+    dominator_count = 0
+    for i in range(len(items) - 1, -1, -1):
+        if items[i] > highest_value:
+            highest_value = items[i]
+            dominator_count += 1
+    return dominator_count
+
+
+def extract_increasing(digits):
+    str_digits = digits
+    new_list = []
+    new_list.append(int(digits[0]))
+    new_list_index_counter = 0
+    plus_counter = 1
+    minus_counter = 0
+    for i in range(1, len(digits)):
+        test_digit = int(str_digits[i - minus_counter:i + plus_counter])
+        previous_digit = int(new_list[new_list_index_counter])
+        if test_digit > previous_digit:
+            new_list.append(test_digit)
+            new_list_index_counter += 1
+            minus_counter = 0
+            plus_counter = 0
+        else:
+            minus_counter += 1
+            plus_counter -= 1
+        plus_counter += 1
+    return new_list
+
+
+
 if __name__ == '__main__':
     a = 'a'
     # print(ryerson_letter_grade(150))
@@ -114,4 +147,9 @@ if __name__ == '__main__':
     # print(only_odd_digits(0))
     # print(pyramid_blocks(10**6, 10**6, 10**6))
     # print(is_cyclops(77781088999))
-    print(domino_cycle([(2, 2)]))
+    # print(domino_cycle([(2, 2)]))
+    # print(count_dominators([99]))
+    # print(extract_increasing('123456789' * 100))
+
+
+
