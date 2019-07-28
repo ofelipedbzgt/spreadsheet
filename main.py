@@ -138,6 +138,58 @@ def extract_increasing(digits):
     return new_list
 
 
+def words_with_letters(words, letters):
+    result_list = []
+    letter_check = 0
+
+    for i in range(len(words)):
+        letter_list = [char for char in words[i]]
+        print(letter_list)
+        for j in range(len(letter_list)):
+            for h in letters:
+                print(h)
+                print(letter_list[j])
+                if h == letter_list[j]:
+                    letter_check += 1
+
+        if letter_check == len(letters):
+            result_list.append(words[i])
+
+    with open('words.txt', 'r') as words:
+        lines = [l.rstrip() for l in words.readlines()]
+
+
+def taxi_zum_zum(moves):
+    pos_x = 0
+    pos_y = 0
+    state = 'north'
+    for i in moves:
+        if i == 'F' and state == 'north':
+            pos_y += 1
+        elif i == 'F' and state == 'south':
+            pos_y -= 1
+        elif i == 'F' and state == 'west':
+            pos_x -= 1
+        elif i == 'F' and state == 'east':
+            pos_x += 1
+        elif i == 'R' and state == 'north':
+            state = 'east'
+        elif i == 'R' and state == 'south':
+            state = 'west'
+        elif i == 'R' and state == 'west':
+            state = 'north'
+        elif i == 'R' and state == 'east':
+            state = 'south'
+        elif i == 'L' and state == 'north':
+            state = 'west'
+        elif i == 'L' and state == 'south':
+            state = 'east'
+        elif i == 'L' and state == 'west':
+            state = 'south'
+        elif i == 'L' and state == 'east':
+            state = 'north'
+    return pos_x, pos_y
+
 
 if __name__ == '__main__':
     a = 'a'
@@ -150,6 +202,10 @@ if __name__ == '__main__':
     # print(domino_cycle([(2, 2)]))
     # print(count_dominators([99]))
     # print(extract_increasing('123456789' * 100))
+    # words_with_letters(lines, 'egr')
+    # print(words_with_letters(['antimnemonic', 'omh'], 'antmnadeic')) TERMINARRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+    # print(taxi_zum_zum('FFLLLFRLFLRFRLRRL'))
+
 
 
 
