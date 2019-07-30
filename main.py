@@ -191,6 +191,35 @@ def taxi_zum_zum(moves):
     return pos_x, pos_y
 
 
+def count_growlers(animals):
+    result = 0
+    facing = ''
+    cat_dog = []
+    for i in range(len(animals)):
+
+        if animals[i] == 'cat' or animals[i] == 'dog':
+            facing = 'left'
+        elif animals[i] == 'tac' or animals[i] == 'god':
+            facing = 'right'
+    return result
+
+
+def tukeys_ninthers(items):
+    new_items = []
+    new_list = []
+
+    if len(items) == 1:
+        return items[0]
+    for i in range(0, len(items), 3):
+        chunk = items[i:i + 3]
+        new_items.append(chunk)
+    for j in range(len(new_items)):
+        print(new_items[j])
+
+
+    return new_list
+
+
 if __name__ == '__main__':
     a = 'a'
     # print(ryerson_letter_grade(150))
@@ -202,10 +231,9 @@ if __name__ == '__main__':
     # print(domino_cycle([(2, 2)]))
     # print(count_dominators([99]))
     # print(extract_increasing('123456789' * 100))
-    # words_with_letters(lines, 'egr')
     # print(words_with_letters(['antimnemonic', 'omh'], 'antmnadeic')) TERMINARRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
     # print(taxi_zum_zum('FFLLLFRLFLRFRLRRL'))
-
-
+    # print(count_growlers(['cat', 'dog'])) TERMINARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+    print(tukeys_ninthers([99, 42, 17, 7, 1, 9, 12, 77, 15]))
 
 
